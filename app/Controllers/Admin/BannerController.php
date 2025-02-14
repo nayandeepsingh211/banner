@@ -40,7 +40,7 @@ class BannerController extends BaseController
             'position' => $this->request->getPost('position'),
         ]);
 
-        return redirect()->to('/admin/banners');
+        return redirect()->to('/');
     }
 
 
@@ -79,7 +79,7 @@ class BannerController extends BaseController
             'position' => $this->request->getPost('position'),
         ]);
 
-        return redirect()->to('/admin/banners');
+        return redirect()->to('/');
     }
 
 
@@ -87,6 +87,6 @@ class BannerController extends BaseController
     {
         $bannerModel = new BannerModel();
         $bannerModel->delete($id);
-        return redirect()->to('/admin/banners');
+        return redirect()->to('/');
     }
 }
