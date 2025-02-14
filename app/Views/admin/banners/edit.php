@@ -9,7 +9,7 @@
     </div>
     <div class="mb-3">
         <label class="form-label">New Banner Image</label>
-        <input type="file" name="image" class="form-control">
+        <input type="file" name="image" class="form-control" accept="image/*">
     </div>
     <div class="mb-3">
         <label class="form-label">Target Link</label>

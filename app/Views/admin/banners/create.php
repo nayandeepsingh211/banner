@@ -4,7 +4,7 @@
 <form action="/admin/banners/store" method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <label class="form-label">Banner Image</label>
-        <input type="file" name="image" class="form-control" required>
+        <input type="file" name="image" class="form-control" required accept="image/*">
     </div>
     <div class="mb-3">
         <label class="form-label">Target Link</label>
