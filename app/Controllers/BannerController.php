@@ -17,7 +17,11 @@ class BannerController extends ResourceController
     {
 
         $bannerModel = new BannerModel();
-        return $this->respond($bannerModel->findAll());
+        $banners = $bannerModel->findAll();
+        foreach ($banners as &$banner) {
+            $banner['image_url'] = base_url('uploads/banners/' . $banner['image']);
+        }
+        return $this->respond($banners);
     }
 
     public function show($id=null)
