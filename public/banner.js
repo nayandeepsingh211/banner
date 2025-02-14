@@ -1,10 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
     var apiUrl = "http://localhost:8080/api/banners";
-
+    
     fetch(apiUrl)
         .then((response) => response.json())
         .then((banners) => {
-            var bannerContainer = document.createElement("div");
+            var bannerContainer = document.getElementById("bannerContainer");
+            var check = document.getElementById("bannerContainer");
+            //alert(bannerContainer);
+            if(bannerContainer==null){
+                //alert(bannerContainer);
+                //alert();
+                bannerContainer = document.createElement("div");
+            }
+            
             bannerContainer.style.display = "flex";  // Ensures horizontal alignment
             bannerContainer.style.justifyContent = "center"; // Center align banners
             bannerContainer.style.width = "100%";
@@ -19,12 +27,17 @@ document.addEventListener("DOMContentLoaded", function () {
                         <img src="${data.image_url}" alt="${data.alt_text}" width="${data.width}" height="${data.height}" />
                     </a>
                 `;
-
+                //else{
                 bannerContainer.appendChild(banner);
-            });
 
+                //}
+            });
+            if(check==null){
+                //alert();
+                document.body.prepend(bannerContainer);
+            }
             // Append the banner container to the body or a specific section
-            document.body.prepend(bannerContainer);
+            //document.body.prepend(bannerContainer);
         })
         .catch((error) => console.error("Error loading banners:", error));
 });
