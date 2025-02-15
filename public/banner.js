@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(apiUrl)
         .then((response) => response.json())
         .then((banners) => {
+            var script = document.querySelector('script[src*="banner.js"]');
+            var customWidth = script.getAttribute("data-width") || null;
+            var customHeight = script.getAttribute("data-height") || null;
+            var customPosition = script.getAttribute("data-position");
             var bannerContainer = document.getElementById("bannerContainer");
             var check = document.getElementById("bannerContainer");
             //alert(bannerContainer);
@@ -16,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
             bannerContainer.style.display = "flex";  // Ensures horizontal alignment
             bannerContainer.style.justifyContent = "center"; // Center align banners
             bannerContainer.style.width = "100%";
+            //bannerContainer.style.height = "25%";
             bannerContainer.style.marginTop = "10px"; // Adjust spacing
 
             banners.forEach((data) => {
@@ -24,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 banner.innerHTML = `
                     <a href="${data.link}" target="_blank">
-                        <img src="${data.image_url}" alt="${data.alt_text}" width="${data.width}" height="${data.height}" />
+                        <img src="${data.image_url}" alt="${data.alt_text}" width="${customWidth?customWidth:data.width}" height="${customHeight?customHeight:data.height}" />
                     </a>
                 `;
                 //else{
